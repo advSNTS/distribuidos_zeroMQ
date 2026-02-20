@@ -1,0 +1,23 @@
+{
+  "name": "taller_solicitantes_rmi_grpc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/advSNTS/taller_solicitantes_RMI_gRPC.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/advSNTS/taller_solicitantes_RMI_gRPC/issues"
+  },
+  "homepage": "https://github.com/advSNTS/taller_solicitantes_RMI_gRPC#readme",
+  "dependencies": {
+    "zeromq": "^6.5.0"
+  }
+}
