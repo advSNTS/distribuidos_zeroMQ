@@ -1,0 +1,110 @@
+[
+  {
+    "id": 1,
+    "isbn": "978-3-16-148410-0",
+    "nombre": "El Quijote",
+    "editorial": "Castalia",
+    "autor": "Miguel de Cervantes",
+    "prestado": false,
+    "fecha_devolucion": null
+  },
+  {
+    "id": 2,
+    "isbn": "978-3-16-148410-0",
+    "nombre": "El Quijote",
+    "editorial": "Castalia",
+    "autor": "Miguel de Cervantes",
+    "prestado": true,
+    "fecha_devolucion": "2026-03-05"
+  },
+  {
+    "id": 3,
+    "isbn": "978-84-376-0494-7",
+    "nombre": "Cien Años de Soledad",
+    "editorial": "Sudamericana",
+    "autor": "Gabriel García Márquez",
+    "prestado": false,
+    "fecha_devolucion": null
+  },
+  {
+    "id": 4,
+    "isbn": "978-84-376-0494-7",
+    "nombre": "Cien Años de Soledad",
+    "editorial": "Sudamericana",
+    "autor": "Gabriel García Márquez",
+    "prestado": true,
+    "fecha_devolucion": "2026-02-28"
+  },
+  {
+    "id": 5,
+    "isbn": "978-0-7432-7356-5",
+    "nombre": "1984",
+    "editorial": "Debolsillo",
+    "autor": "George Orwell",
+    "prestado": false,
+    "fecha_devolucion": null
+  },
+  {
+    "id": 6,
+    "isbn": "978-0-7432-7356-5",
+    "nombre": "1984",
+    "editorial": "Debolsillo",
+    "autor": "George Orwell",
+    "prestado": true,
+    "fecha_devolucion": "2026-03-10"
+  },
+  {
+    "id": 7,
+    "isbn": "978-84-08-04129-7",
+    "nombre": "La Sombra del Viento",
+    "editorial": "Planeta",
+    "autor": "Carlos Ruiz Zafón",
+    "prestado": false,
+    "fecha_devolucion": null
+  },
+  {
+    "id": 8,
+    "isbn": "978-84-663-1041-3",
+    "nombre": "El Principito",
+    "editorial": "Salamandra",
+    "autor": "Antoine de Saint-Exupéry",
+    "prestado": false,
+    "fecha_devolucion": null
+  },
+  {
+    "id": 9,
+    "isbn": "978-84-663-1041-3",
+    "nombre": "El Principito",
+    "editorial": "Salamandra",
+    "autor": "Antoine de Saint-Exupéry",
+    "prestado": true,
+    "fecha_devolucion": "2026-03-01"
+  },
+  {
+    "id": 10,
+    "isbn": "978-84-204-6927-5",
+    "nombre": "Rayuela",
+    "editorial": "Alfaguara",
+    "autor": "Julio Cortázar",
+    "prestado": false,
+    "fecha_devolucion": null
+  },
+  {
+    "id": 11,
+    "isbn": "978-84-204-6927-5",
+    "nombre": "Rayuela",
+    "editorial": "Alfaguara",
+    "autor": "Julio Cortázar",
+    "prestado": true,
+    "fecha_devolucion": "2026-03-12"
+  },
+  {
+    "id": 12,
+    "isbn": "978-84-233-4271-7",
+    "nombre": "La Metamorfosis",
+    "editorial": "Austral",
+    "autor": "Franz Kafka",
+    "prestado": false,
+    "fecha_devolucion": null
+  }
+]
