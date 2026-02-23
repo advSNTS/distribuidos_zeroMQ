@@ -14,8 +14,8 @@
     "nombre": "El Quijote",
     "editorial": "Castalia",
     "autor": "Miguel de Cervantes",
-    "prestado": true,
-    "fecha_devolucion": "2026-03-02"
+    "prestado": false,
+    "fecha_devolucion": null
   },
   {
     "id": 3,

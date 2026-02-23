@@ -1,21 +1,71 @@
 // cliente.js
 import { Request } from 'zeromq';
+import { input, select } from '@inquirer/prompts';
+
+// ── Conexión ─────────────────────────────────────────────────
+const socket = await input({
+    message: '📡 Ingresa la dirección del servidor (ej: 10.0.0.1:5555):',
+    validate: (v) => /^.+:\d+$/.test(v) || 'Formato inválido, usa host:puerto',
+});
 
 const sock = new Request();
-sock.connect('tcp://localhost:5555');
+sock.connect(`tcp://${socket}`);
 
-// Probar por título
-await sock.send(JSON.stringify({ tipo: 'prestamo', titulo: 'El Quijote' }));
-const [respTitulo] = await sock.receive();
-console.log('Por título:', JSON.parse(respTitulo.toString()));
+// ── Loop principal ───────────────────────────────────────────
+while (true) {
 
-// Probar por ISBN
-await sock.send(JSON.stringify({ tipo: 'consulta', isbn: '978-3-16-148410-0' }));
-const [respIsbn] = await sock.receive();
-console.log(JSON.parse(respIsbn.toString()));
+    const accion = await select({
+        message: '¿Qué deseas hacer?',
+        choices: [
+            { name: '📖  Pedir prestado', value: 'prestamo'   },
+            { name: '↩️  Devolver',       value: 'devolucion' },
+            { name: '🔍  Consultar',       value: 'consulta'   },
+            { name: '🚪  Salir',           value: 'salir'      },
+        ],
+    });
 
-await sock.send(JSON.stringify({ tipo: 'devolucion', isbn: '978-3-16-148410-0', id: 1 }));
-const [respDev] = await sock.receive();
-console.log(JSON.parse(respDev.toString()));
+    if (accion === 'salir') {
+        console.log('\n¡👋 Hasta luego!\n');
+        sock.close();
+        process.exit(0);
+    }
 
-sock.close();
+    // ── Parámetros por acción ────────────────────────────────
+    let peticion;
+
+    if (accion === 'prestamo') {
+        const metodo = await select({
+            message: '¿Buscar por?',
+            choices: [
+                { name: 'Título', value: 'titulo' },
+                { name: 'ISBN',   value: 'isbn'   },
+            ],
+        });
+
+        const valor = await input({
+            message: metodo === 'titulo' ? 'Título del libro:' : 'ISBN del libro:',
+        });
+
+        peticion = { tipo: 'prestamo', [metodo]: valor };
+
+    } else if (accion === 'devolucion') {
+        const isbn = await input({ message: 'ISBN del libro:' });
+        const id   = await input({ message: 'ID del ejemplar:' });
+
+        peticion = { tipo: 'devolucion', isbn, id: Number(id) };
+
+    } else if (accion === 'consulta') {
+        const isbn = await input({ message: 'ISBN del libro:' });
+
+        peticion = { tipo: 'consulta', isbn };
+    }
+
+    // ── Envío y respuesta ────────────────────────────────────
+    await sock.send(JSON.stringify(peticion));
+    const [res] = await sock.receive();
+    const respuesta = JSON.parse(res.toString());
+
+    console.log('\n', respuesta.ok ? '✅' : '❌', respuesta.mensaje);
+    if (respuesta.libro) console.log(respuesta.libro);
+    console.log('─'.repeat(45) + '\n');
+}
