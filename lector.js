@@ -14,4 +14,8 @@ await sock.send(JSON.stringify({ tipo: 'consulta', isbn: '978-3-16-148410-0' }))
 const [respIsbn] = await sock.receive();
 console.log(JSON.parse(respIsbn.toString()));
 
+await sock.send(JSON.stringify({ tipo: 'devolucion', isbn: '978-3-16-148410-0', id: 1 }));
+const [respDev] = await sock.receive();
+console.log(JSON.parse(respDev.toString()));
+
 sock.close();

@@ -42,7 +42,7 @@ const handlers = {
 
         return {
             ok: true,
-            mensaje: 'Préstamo exitoso',
+            mensaje: 'Préstamo exitoso, por favor guarde el ID del libro para su devolución.',
             libro: {
                 id: libro.id,
                 nombre: libro.nombre,
@@ -86,6 +86,35 @@ const handlers = {
                 isbn: ejemplares[0].isbn,
                 disponibles: disponibles.length,
                 total: ejemplares.length,
+            },
+        };
+    },
+
+    devolucion: ({ isbn, id }) => {
+        const libros = leerDB();
+
+        const libro = libros.find(l => l.id === id && l.isbn === isbn);
+
+        if (!libro) {
+            return { ok: false, mensaje: 'No existe ningún libro con ese ID e ISBN' };
+        }
+
+        if (!libro.prestado) {
+            return { ok: false, mensaje: 'El libro no ha sido prestado, ya se encuentra en la biblioteca' };
+        }
+
+        libro.prestado = false;
+        libro.fecha_devolucion = null;
+        guardarDB(libros);
+
+        return {
+            ok: true,
+            mensaje: 'Devolución exitosa',
+            libro: {
+                id: libro.id,
+                nombre: libro.nombre,
+                autor: libro.autor,
+                isbn: libro.isbn,
             },
         };
     },
