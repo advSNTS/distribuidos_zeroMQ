@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/advSNTS/taller_solicitantes_RMI_gRPC.git"
+    "url": "git+https://github.com/advSNTS/distribuidos_zeroMQ.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/advSNTS/taller_solicitantes_RMI_gRPC/issues"
+    "url": "https://github.com/advSNTS/distribuidos_zeroMQ/issues"
   },
-  "homepage": "https://github.com/advSNTS/taller_solicitantes_RMI_gRPC#readme",
+  "homepage": "https://github.com/advSNTS/distribuidos_zeroMQ#readme",
   "dependencies": {
     "zeromq": "^6.5.0"
   }
