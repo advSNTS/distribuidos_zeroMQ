@@ -66,6 +66,7 @@ for await (const [msg] of sock) {
     try {
         const peticion = JSON.parse(msg.toString());
         // Petición esperada: { isbn: "..." } o { titulo: "..." }
+        console.log("Peticion recibida: ", peticion);
         respuesta = prestarLibro(peticion);
     } catch (err) {
         respuesta = { ok: false, mensaje: 'Petición inválida', error: err.message };
