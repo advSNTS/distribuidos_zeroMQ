@@ -10,8 +10,8 @@ const [respTitulo] = await sock.receive();
 console.log('Por título:', JSON.parse(respTitulo.toString()));
 
 // Probar por ISBN
-await sock.send(JSON.stringify({ tipo: 'prestamo', isbn: '978-3-16-148410-0' }));
+await sock.send(JSON.stringify({ tipo: 'consulta', isbn: '978-3-16-148410-0' }));
 const [respIsbn] = await sock.receive();
-console.log('Por ISBN:', JSON.parse(respIsbn.toString()));
+console.log(JSON.parse(respIsbn.toString()));
 
 sock.close();

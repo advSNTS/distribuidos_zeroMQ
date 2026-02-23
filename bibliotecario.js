@@ -53,13 +53,46 @@ const handlers = {
         };
     },
 
-    // próximos handlers irán aquí...
-    // devolucion: ({ id }) => { ... },
-    // buscar:    ({ titulo, autor }) => { ... },
+    consulta: ({ isbn }) => {
+        const libros = leerDB();
+
+        // Todos los ejemplares con ese ISBN
+        const ejemplares = libros.filter(l => l.isbn === isbn);
+
+        if (ejemplares.length === 0) {
+            return { ok: false, mensaje: 'No existe ningún libro con ese ISBN' };
+        }
+
+        const disponibles = ejemplares.filter(l => !l.prestado);
+
+        if (disponibles.length === 0) {
+            return {
+                ok: false,
+                mensaje: 'Todos los ejemplares están prestados',
+                libro: {
+                    nombre: ejemplares[0].nombre,
+                    autor: ejemplares[0].autor,
+                    isbn: ejemplares[0].isbn,
+                },
+            };
+        }
+
+        return {
+            ok: true,
+            mensaje: `Hay ${disponibles.length} ejemplar(es) disponible(s)`,
+            libro: {
+                nombre: ejemplares[0].nombre,
+                autor: ejemplares[0].autor,
+                isbn: ejemplares[0].isbn,
+                disponibles: disponibles.length,
+                total: ejemplares.length,
+            },
+        };
+    },
 
 };
 
-// ── Servidor ZeroMQ ──────────────────────────────────────────
+//________ Creación del servidor 0MQ______________________
 const sock = new Reply();
 await sock.bind('tcp://*:5555');
 console.log('📚 Servidor de biblioteca escuchando en tcp://*:5555');
