@@ -7,7 +7,7 @@ Proyecto de comunicación entre dispositivos utilizando Node.js y ZeroMQ. Permit
 ## Requisitos previos
 
 - **Node.js** instalado en todos los dispositivos que participen en la comunicación.
- Se sugiere que utilice una versión precompilada en dispositivos windows.
+ Se sugiere que utilice una versión precompilada en dispositivos windows. La versión recomendada es la **24.14.0 LTS**.
   Puedes encontrar las instrucciones de instalación oficiales según su sistema operativo en: https://nodejs.org
  
 
