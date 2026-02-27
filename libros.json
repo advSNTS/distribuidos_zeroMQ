@@ -23,8 +23,8 @@
     "nombre": "Cien Años de Soledad",
     "editorial": "Sudamericana",
     "autor": "Gabriel García Márquez",
-    "prestado": false,
-    "fecha_devolucion": null
+    "prestado": true,
+    "fecha_devolucion": "2026-03-10"
   },
   {
     "id": 4,
